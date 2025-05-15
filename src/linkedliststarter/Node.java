@@ -21,7 +21,7 @@ public class Node {
         next = n;
     }
     
-    public void setNode(Node n){
+    public void setNext(Node n){
         next = n;
     }
     public Node getNext(){
