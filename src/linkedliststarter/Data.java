@@ -8,7 +8,7 @@ package linkedliststarter;
  *
  * @author michael.roy-diclemen
  */
-public class Data implements Comparable{
+public class Data implements Comparable<Data>{
     int number;
     String firstName;
     String lastName;
@@ -26,14 +26,15 @@ public class Data implements Comparable{
             return false;
         //add code to properly compare
         
-        if(this.number == ((Data)o).number && this.firstName.equals(((Data)o).firstName) && ) 
-        return true;
+        if(this.number == ((Data)o).number && this.firstName.equals(((Data)o).firstName) && this.lastName.equals(((Data)o).lastName) && this.priority == ((Data)o).priority){
+            return true;
+        }
+        return false;
         
     }
 
     @Override
-    public int compareTo(Object o) {
-        
-        return 0;
+    public int compareTo(Data o) {
+        return this.priority - o.priority;
     }
 }
