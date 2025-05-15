@@ -16,7 +16,7 @@ public class Data implements Comparable{
     
     @Override
     public String toString(){
-        return null;
+        return firstName + " " + lastName;
     }
     
     @Override
@@ -26,6 +26,7 @@ public class Data implements Comparable{
             return false;
         //add code to properly compare
         
+        if(this.number == ((Data)o).number && this.firstName.equals(((Data)o).firstName) && ) 
         return true;
         
     }
