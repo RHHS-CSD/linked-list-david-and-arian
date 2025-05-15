@@ -77,8 +77,17 @@ public class SinglyLinkedList implements ILinkedList{
      * @return true if successfuuly added, false otherwise
      */
     @Override
-    public boolean add(String item) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+    public boolean add(Data item) {
+        if(item == null || this.head == null) {
+            return false;
+        }
+        
+        Node temp = head;
+        while(temp.next != null) {
+            temp = temp.next;
+        }
+        temp.next = new Node(item);
+        return true;
     }
 
     /**
@@ -88,8 +97,8 @@ public class SinglyLinkedList implements ILinkedList{
      * @return true if successfuuly added, false otherwise
      */
     @Override
-    public boolean add(String item, int index) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+    public boolean add(Data item, int index) {
+        
     }
     
     
