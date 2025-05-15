@@ -48,7 +48,20 @@ public class SinglyLinkedList implements ILinkedList{
      */
     @Override
     public boolean remove(int index) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        int size = size();
+        if(index < 0 && index > size - 1)
+            return false;
+        if(index == 0){
+            head = head.getNext();
+            return true;
+        }
+        if(index == size){
+            Node item = head;
+            for (int i = 0; i < size - 1; i++){
+                item = item.getNext();
+            }
+            item.setNext(item.getNext().getNext());
+        }
     }
 
     /**
