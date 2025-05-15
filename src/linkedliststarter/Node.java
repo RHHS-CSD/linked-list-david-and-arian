@@ -20,4 +20,17 @@ public class Node {
         this.d = d;
         next = n;
     }
+    
+    public void setNode(Node n){
+        next = n;
+    }
+    public Node getNext(){
+        return next;
+    }
+    public Data getD(){
+        return d;
+    }
+    public void setD(Data d){
+        this.d = d;
+    }
 }
