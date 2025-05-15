@@ -9,6 +9,10 @@ package linkedliststarter;
  * @author michael.roy-diclemen
  */
 public class Data implements Comparable{
+    int number;
+    String firstName;
+    String lastName;
+    int priority;
     
     @Override
     public String toString(){

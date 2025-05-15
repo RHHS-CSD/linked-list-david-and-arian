@@ -9,5 +9,15 @@ package linkedliststarter;
  * @author michael.roy-diclemen
  */
 public class Node {
+    Data d;
+    Node next;
     
+    public Node(Data d) {
+        this.d = d;
+        next = null;
+    }
+    public Node(Data d, Node n) {
+        this.d = d;
+        next = n;
+    }
 }
