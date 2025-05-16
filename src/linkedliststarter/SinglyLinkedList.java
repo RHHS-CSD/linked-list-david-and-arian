@@ -112,7 +112,7 @@ public class SinglyLinkedList implements ILinkedList{
         int size = size();
         Node pointer = head;
         for(int i = 0; i < size; i++){
-            if(pointer.getD() == item){
+            if(pointer.getD().equals(item)){
                 return i;
             }
             pointer = pointer.getNext();
