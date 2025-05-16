@@ -20,7 +20,6 @@ public class LinkedListStarter {
         sli1.add(new Data(0, "David", "H.", 1));
         sli1.add(new Data(0, "bob", "d", 0));
         sli1.add(new Data(0, "da", "j", 0));
-        System.out.println(sli1.get(0));
 //        sli1.swap(0,2);
 //        System.out.println(sli1.get(0));
 //        System.out.println(sli1.get(2));

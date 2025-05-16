@@ -86,7 +86,7 @@ public class SinglyLinkedList implements ILinkedList{
         }
         if(index == size - 1){
             Node item = head;
-            for (int i = 0; i < index; i++){
+            for (int i = 1; i < index; i++){
                 item = item.getNext();
             }
             item.setNext(item.getNext().getNext());
@@ -132,7 +132,7 @@ public class SinglyLinkedList implements ILinkedList{
     @Override
     public Data get(int index) {
         Node pointer = head;
-        if(index > size()-1 && index < 0) return null;
+        if(index > size()-1 || index < 0) return null;
         for(int i = 0; i < index; i++){
             pointer = pointer.getNext();
         }
@@ -147,7 +147,7 @@ public class SinglyLinkedList implements ILinkedList{
      */
     @Override
     public boolean add(Data item) {
-        return add(item, this.size()-1);
+        return add(item, this.size());
     }
 
     /**
@@ -213,7 +213,7 @@ public class SinglyLinkedList implements ILinkedList{
         }
         
         this.add(this.get(n), m);
-        this.add(this.get(m+1), n);
+        this.add(this.get(m+1), n+1);
         this.remove(m+1);
         this.remove(n+1);
         return true;
