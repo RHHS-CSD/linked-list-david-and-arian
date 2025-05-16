@@ -12,14 +12,27 @@ public class SinglyLinkedList implements ILinkedList{
     private Node head;
     private Node tail;
 
+    public SinglyLinkedList() {
+        head = null;
+        tail = null;
+    }
+    
+    public SinglyLinkedList(Node head, Node tail) {
+        this.head = head;
+        this.tail = tail;
+    }
     /**
      * Return the size of the Linked List
      * @return an int representing the size
      */
     @Override
     public int size() {
+        if(head == null) {
+            return 0;
+        }
+        
         Node temp = head;
-        int count = 0;
+        int count = 1;
         while(temp.next != null) {
             count++;
             temp = temp.next;
@@ -118,11 +131,11 @@ public class SinglyLinkedList implements ILinkedList{
     @Override
     public Data get(int index) {
         Node pointer = head;
-        if(index > size() && index < 0) return null;
+        if(index > size()-1 && index < 0) return null;
         for(int i = 0; i < index; i++){
             pointer = pointer.getNext();
         }
-        return pointer.getD();
+        return pointer != null ?pointer.getD():null;
     }
 
     /**
@@ -133,11 +146,16 @@ public class SinglyLinkedList implements ILinkedList{
      */
     @Override
     public boolean add(Data item) {
-        if(item == null || this.head == null) {
+        if(item == null) {
             return false;
         }
         
         Node temp = head;
+        if(temp == null) {
+            head = new Node(item);
+            return true;
+        }
+        
         while(temp.next != null) {
             temp = temp.next;
         }
