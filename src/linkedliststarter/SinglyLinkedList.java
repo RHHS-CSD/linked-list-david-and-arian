@@ -17,10 +17,11 @@ public class SinglyLinkedList implements ILinkedList{
         tail = null;
     }
     
-    public SinglyLinkedList(Node head, Node tail) {
-        this.head = head;
-        this.tail = tail;
-    }
+//    public SinglyLinkedList(Node head, Node tail) {
+//        this.head = head;
+//        this.tail = tail;
+//    }
+    
     /**
      * Return the size of the Linked List
      * @return an int representing the size
@@ -175,10 +176,7 @@ public class SinglyLinkedList implements ILinkedList{
         }
         add.next = temp.next;
         temp.next = add;
-        return true;
-        
-        
-        
+        return true; 
     }
     
     
