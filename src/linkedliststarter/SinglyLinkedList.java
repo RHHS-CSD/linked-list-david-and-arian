@@ -23,10 +23,13 @@ public class SinglyLinkedList implements ILinkedList{
 
     /**
      * Reset / Empty the LinkedList
+     * 
+     * @author Arian H.
      */
     @Override
     public void clear() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        tail = null;
+        head = null;
     }
 
     /**
