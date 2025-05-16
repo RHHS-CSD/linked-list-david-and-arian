@@ -146,21 +146,7 @@ public class SinglyLinkedList implements ILinkedList{
      */
     @Override
     public boolean add(Data item) {
-        if(item == null) {
-            return false;
-        }
-        
-        Node temp = head;
-        if(temp == null) {
-            head = new Node(item);
-            return true;
-        }
-        
-        while(temp.next != null) {
-            temp = temp.next;
-        }
-        temp.next = new Node(item);
-        return true;
+        return add(item, this.size()-1);
     }
 
     /**
@@ -176,11 +162,16 @@ public class SinglyLinkedList implements ILinkedList{
             return false;
         }
         
+        Node add = new Node(item);
+        if(index == 0) {
+            add.next = head;
+            head = add;
+        }
+        
         Node temp = head;
         for(int i = 0; i < index-1; i++) {
             temp = temp.next;
         }
-        Node add = new Node(item);
         add.next = temp.next;
         temp.next = add;
         return true;
