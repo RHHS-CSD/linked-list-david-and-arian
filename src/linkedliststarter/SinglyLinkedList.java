@@ -37,7 +37,9 @@ public class SinglyLinkedList implements ILinkedList{
      */
     @Override
     public boolean remove(Data item) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        int index = this.indexOf(item);
+        if(index == -1) return false;
+        else return remove(index);
     }
 
     /**
@@ -45,6 +47,8 @@ public class SinglyLinkedList implements ILinkedList{
      * @param index The index of the item to remove
      * @return true: if the item was found and removed
      *         false otherwise
+     * 
+     * @author Arian H.
      */
     @Override
     public boolean remove(int index) {
@@ -55,13 +59,21 @@ public class SinglyLinkedList implements ILinkedList{
             head = head.getNext();
             return true;
         }
-        if(index == size){
+        if(index == size - 1){
             Node item = head;
-            for (int i = 0; i < size - 1; i++){
+            for (int i = 0; i < index; i++){
                 item = item.getNext();
             }
             item.setNext(item.getNext().getNext());
+            tail = item;
+            return true;
         }
+        Node item = head;
+        for (int i = 1; i < index - 1; i++){
+            item = item.getNext();
+        }
+        item.setNext(item.getNext().getNext());
+        return true;
     }
 
     /**
@@ -71,7 +83,16 @@ public class SinglyLinkedList implements ILinkedList{
      */
     @Override
     public int indexOf(Data item) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        int size = size();
+        Node pointer = head;
+        for(int i = 0; i < size; i++){
+            if(pointer.getD() == item){
+                return i;
+            }
+            pointer = pointer.getNext();
+        }
+        
+        return -1;
     }
 
     /**
@@ -81,7 +102,11 @@ public class SinglyLinkedList implements ILinkedList{
      */
     @Override
     public Data get(int index) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        Node pointer = head;
+        for(int i = 0; i < index; i++){
+            pointer = pointer.getNext();
+        }
+        return pointer.getD();
     }
 
     /**
