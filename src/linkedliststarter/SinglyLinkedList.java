@@ -119,6 +119,7 @@ public class SinglyLinkedList implements ILinkedList{
      * Add the gen item to the end of the linked list
      * @param item Item to add
      * @return true if successfuuly added, false otherwise
+     * @author David
      */
     @Override
     public boolean add(Data item) {
@@ -139,9 +140,24 @@ public class SinglyLinkedList implements ILinkedList{
      * @param item Item to add
      * @param index The position to add the item
      * @return true if successfuuly added, false otherwise
+     * @author David
      */
     @Override
     public boolean add(Data item, int index) {
+        if(index < 0 || item == null) {
+            return false;
+        }
+        
+        Node temp = head;
+        for(int i = 0; i < index-1; i++) {
+            temp = temp.next;
+        }
+        Node add = new Node(item);
+        add.next = temp.next;
+        temp.next = add;
+        return true;
+        
+        
         
     }
     
