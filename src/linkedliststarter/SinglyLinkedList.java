@@ -166,6 +166,7 @@ public class SinglyLinkedList implements ILinkedList{
         if(index == 0) {
             add.next = head;
             head = add;
+            return true;
         }
         
         Node temp = head;
