@@ -175,10 +175,7 @@ public class SinglyLinkedList implements ILinkedList{
         }
         add.next = temp.next;
         temp.next = add;
-        return true;
-        
-        
-        
+        return true; 
     }
     
     
