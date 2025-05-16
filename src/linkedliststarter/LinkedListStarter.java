@@ -17,7 +17,9 @@ public class LinkedListStarter {
         // This is a shared space for you to do some testing  It will also likely be the source of lots of conflicts if you're not careful.
         SinglyLinkedList sli1 = new SinglyLinkedList();
         
+        sli1.add(new Data(0, "David", "H.", 1));
         
+        System.out.println(sli1.get(0));
         
     }
     

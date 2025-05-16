@@ -13,6 +13,13 @@ public class Data implements Comparable<Data>{
     private String firstName;
     private String lastName;
     int priority;
+
+    public Data(int number, String firstName, String lastName, int priority) {
+        this.number = number;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.priority = priority;
+    }
     
     @Override
     public String toString(){
