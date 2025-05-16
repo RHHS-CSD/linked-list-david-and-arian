@@ -182,4 +182,43 @@ public class SinglyLinkedList implements ILinkedList{
     }
     
     
+    /**
+     * 
+     * @param other
+     * @return 
+     * @author David
+     */
+    public boolean join(SinglyLinkedList other) {
+        if(other.size() == 0) {
+            return false;
+        }
+        
+        Node temp = other.head;
+        for(int i = 0; i < other.size(); i++) {
+            this.add(temp.getD());
+            temp = temp.next;
+        }
+        return true;
+    }
+    
+    
+    /**
+     * 
+     * @param m
+     * @param n
+     * @return 
+     * @author David
+     */
+    public boolean swap(int m, int n) {
+        if(m < 0 || m > size() || n < 0 || n > size()) {
+            return false;
+        }
+        
+        this.add(this.get(n), m);
+        this.add(this.get(m+1), n);
+        this.remove(m+1);
+        this.remove(n+1);
+        return true;
+    }
+    
 }
