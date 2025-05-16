@@ -17,16 +17,16 @@ public class LinkedListStarter {
         // This is a shared space for you to do some testing  It will also likely be the source of lots of conflicts if you're not careful.
         SinglyLinkedList sli1 = new SinglyLinkedList();
         
-//        sli1.add(new Data(0, "David", "H.", 1));
-//        sli1.add(new Data(0, "bob", "d", 0));
-//        sli1.add(new Data(0, "da", "j", 0));
+        sli1.add(new Data(0, "David", "H.", 1));
+        sli1.add(new Data(0, "bob", "d", 0));
+        sli1.add(new Data(0, "da", "j", 0));
         
         
         System.out.println(sli1.get(0));
         System.out.println(sli1.size());
         
-//        sli1.remove(new Data(0, "bob", "d", 0));
-        sli1.add(new Data(0, "bob", "d", 0), 2);
+        sli1.remove(new Data(0, "bob", "d", 0));
+        sli1.add(new Data(0, "bob", "d", 0), 0);
         System.out.println(sli1.get(0));
         
     }
