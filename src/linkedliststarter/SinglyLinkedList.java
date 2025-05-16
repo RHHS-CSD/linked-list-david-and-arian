@@ -158,7 +158,7 @@ public class SinglyLinkedList implements ILinkedList{
      */
     @Override
     public boolean add(Data item, int index) {
-        if(index < 0 || item == null) {
+        if(index < 0 || index > this.size() || item == null) {
             return false;
         }
         
