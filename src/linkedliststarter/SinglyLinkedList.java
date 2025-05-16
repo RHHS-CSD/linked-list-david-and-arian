@@ -118,6 +118,7 @@ public class SinglyLinkedList implements ILinkedList{
     @Override
     public Data get(int index) {
         Node pointer = head;
+        if(index > size() && index < 0) return null;
         for(int i = 0; i < index; i++){
             pointer = pointer.getNext();
         }
