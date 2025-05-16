@@ -34,6 +34,8 @@ public class SinglyLinkedList implements ILinkedList{
      * @param item The item to be removed
      * @return true: if the item was found and removed
      *         false otherwise
+     * 
+     * @author Arian H.
      */
     @Override
     public boolean remove(Data item) {
@@ -80,6 +82,8 @@ public class SinglyLinkedList implements ILinkedList{
      * Returns the first found index of the given item
      * @param item The item to find
      * @return The index of the found item, or -1
+     * 
+     * @author Arian H.
      */
     @Override
     public int indexOf(Data item) {
@@ -99,6 +103,8 @@ public class SinglyLinkedList implements ILinkedList{
      * Retrieves the Data at the given index
      * @param index The index to be retrieved
      * @return The data item, null if bad index
+     * 
+     * @author Arian H.
      */
     @Override
     public Data get(int index) {
