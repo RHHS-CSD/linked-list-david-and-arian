@@ -28,12 +28,14 @@ public class SinglyLinkedList implements ILinkedList{
      */
     @Override
     public int size() {
+        //check if size is 0
         if(head == null) {
             return 0;
         }
         
         Node temp = head;
         int count = 1;
+        //keep counting while we aren't at end of list
         while(temp.next != null) {
             count++;
             temp = temp.next;
@@ -94,7 +96,7 @@ public class SinglyLinkedList implements ILinkedList{
             return true;
         }
         Node item = head;
-        for (int i = 1; i < index - 1; i++){
+        for (int i = 1; i < index; i++){
             item = item.getNext();
         }
         item.setNext(item.getNext().getNext());
@@ -147,6 +149,7 @@ public class SinglyLinkedList implements ILinkedList{
      */
     @Override
     public boolean add(Data item) {
+        //add item to end of list
         return add(item, this.size());
     }
 
@@ -154,16 +157,18 @@ public class SinglyLinkedList implements ILinkedList{
      * Add the gen item to  the linked list at the given position
      * @param item Item to add
      * @param index The position to add the item
-     * @return true if successfuuly added, false otherwise
+     * @return true if successfully added, false otherwise
      * @author David
      */
     @Override
     public boolean add(Data item, int index) {
+        //check if item can be successfully added
         if(index < 0 || index > this.size() || item == null) {
             return false;
         }
         
         Node add = new Node(item);
+        //check if adding to the beginning
         if(index == 0) {
             add.next = head;
             head = add;
@@ -171,27 +176,36 @@ public class SinglyLinkedList implements ILinkedList{
         }
         
         Node temp = head;
+        //find node to be added to
         for(int i = 0; i < index-1; i++) {
             temp = temp.next;
         }
+        //add item
         add.next = temp.next;
         temp.next = add;
+        //check if we need to update tail
+        if(index == this.size()) {
+            tail = add;
+        }
+        
         return true; 
     }
     
     
     /**
-     * 
-     * @param other
-     * @return 
+     * Adds a linked list to the end linked list. 
+     * @param other the linkedlist to be added 
+     * @return true if lists were successfully concatenated, false if failed or other list is non existent
      * @author David
      */
     public boolean join(SinglyLinkedList other) {
+        //check if other linked list exists
         if(other.size() == 0) {
             return false;
         }
         
         Node temp = other.head;
+        //add elements from other linked list to this linked list
         for(int i = 0; i < other.size(); i++) {
             this.add(temp.getD());
             temp = temp.next;
@@ -201,19 +215,22 @@ public class SinglyLinkedList implements ILinkedList{
     
     
     /**
-     * 
-     * @param m
-     * @param n
-     * @return 
+     * swaps nodes at the given indexes
+     * @param m index of one item to be swapped
+     * @param n index of the other item to be swapped
+     * @return true if successfully swapped, false if not
      * @author David
      */
     public boolean swap(int m, int n) {
+        //check if indexes are valid
         if(m < 0 || m > size() || n < 0 || n > size()) {
             return false;
         }
         
+        //add data to correct spots
         this.add(this.get(n), m);
         this.add(this.get(m+1), n+1);
+        //remove the excess
         this.remove(m+1);
         this.remove(n+1);
         return true;
