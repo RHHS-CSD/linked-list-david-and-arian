@@ -229,10 +229,22 @@ public class SinglyLinkedList implements ILinkedList{
         
         //add data to correct spots
         this.add(this.get(n), m);
-        this.add(this.get(m+1), n+1);
+        
+        if(n > m) {
+            this.add(this.get(m+1), n+1);
+        }
+        else this.add(this.get(m+1), n);
         //remove the excess
-        this.remove(m+1);
-        this.remove(n+1);
+        
+        if(n > m) {
+            this.remove(m+1);
+            this.remove(n+1);
+        }
+        else {
+            this.remove(n+1);
+            this.remove(m+1);
+        }
+            
         return true;
     }
     
