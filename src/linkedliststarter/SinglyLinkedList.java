@@ -17,10 +17,10 @@ public class SinglyLinkedList implements ILinkedList{
         tail = null;
     }
     
-//    public SinglyLinkedList(Node head, Node tail) {
-//        this.head = head;
-//        this.tail = tail;
-//    }
+    public SinglyLinkedList(Node head, Node tail) {
+        this.head = head;
+        this.tail = tail;
+    }
     
     /**
      * Return the size of the Linked List
@@ -140,6 +140,15 @@ public class SinglyLinkedList implements ILinkedList{
         }
         return pointer != null ?pointer.getD():null;
     }
+    
+    public Node getNode(int index) {
+        Node pointer = head;
+        if(index > size()-1 || index < 0) return null;
+        for(int i = 0; i < index; i++){
+            pointer = pointer.getNext();
+        }
+        return pointer != null ?pointer:null;
+    }
 
     /**
      * Add the gen item to the end of the linked list
@@ -191,14 +200,60 @@ public class SinglyLinkedList implements ILinkedList{
         return true; 
     }
     
+    /**
+     * Join two linked lists
+     * 
+     * @author Arian H.
+     * @param ll1 
+     * @param ll2 
+     * @return
+     */
+    public SinglyLinkedList joinArian(SinglyLinkedList ll1, SinglyLinkedList ll2){
+        ll1.tail.setNext(ll2.head);
+        return new SinglyLinkedList(ll1.head, ll2.tail);
+    }
     
     /**
-     * Adds a linked list to the end linked list. 
+     * Swapping two elements
+     * 
+     * @param i index of the first element
+     * @param j 
+     */
+    public void swapArian(int i, int j){
+        Node leftI = this.getNode(i-1);
+        Node I = leftI != null ? leftI.next : head;
+        Node leftJ = this.getNode(j - 1);
+        Node J = leftJ != null ? leftJ.next : head;
+        if(J.next == null){
+            tail = I;
+        }
+        else if (I.next == null){
+            tail = J;
+        }
+        if(leftI == null){
+            head = J;
+            leftJ.next = I;
+        }
+        else if(leftJ == null){
+            head = I;
+            leftI.next = J;
+        }
+        else{
+            leftJ.next = I;
+            leftI.next = J;
+        }
+        Node temp = J.next;
+        J.next = I.next;
+        I.next = temp;
+    }
+    
+    
+     /* Adds a linked list to the end linked list. 
      * @param other the linkedlist to be added 
      * @return true if lists were successfully concatenated, false if failed or other list is non existent
      * @author David
      */
-    public boolean join(SinglyLinkedList other) {
+    public boolean joinDavid(SinglyLinkedList other) {
         //check if other linked list exists
         if(other.size() == 0) {
             return false;
@@ -221,7 +276,7 @@ public class SinglyLinkedList implements ILinkedList{
      * @return true if successfully swapped, false if not
      * @author David
      */
-    public boolean swap(int m, int n) {
+    public boolean swapDavid(int m, int n) {
         //check if indexes are valid
         if(m < 0 || m > size() || n < 0 || n > size()) {
             return false;
