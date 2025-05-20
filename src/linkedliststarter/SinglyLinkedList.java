@@ -17,10 +17,10 @@ public class SinglyLinkedList implements ILinkedList{
         tail = null;
     }
     
-//    public SinglyLinkedList(Node head, Node tail) {
-//        this.head = head;
-//        this.tail = tail;
-//    }
+    public SinglyLinkedList(Node head, Node tail) {
+        this.head = head;
+        this.tail = tail;
+    }
     
     /**
      * Return the size of the Linked List
@@ -138,6 +138,15 @@ public class SinglyLinkedList implements ILinkedList{
         }
         return pointer != null ?pointer.getD():null;
     }
+    
+    public Node getNode(int index) {
+        Node pointer = head;
+        if(index > size()-1 && index < 0) return null;
+        for(int i = 0; i < index; i++){
+            pointer = pointer.getNext();
+        }
+        return pointer != null ?pointer:null;
+    }
 
     /**
      * Add the gen item to the end of the linked list
@@ -154,7 +163,7 @@ public class SinglyLinkedList implements ILinkedList{
      * Add the gen item to  the linked list at the given position
      * @param item Item to add
      * @param index The position to add the item
-     * @return true if successfuuly added, false otherwise
+     * @return true if successfuly added, false otherwise
      * @author David
      */
     @Override
@@ -179,5 +188,48 @@ public class SinglyLinkedList implements ILinkedList{
         return true; 
     }
     
+    /**
+     * Join two linked lists
+     * 
+     * @author Arian H.
+     * @param ll1 
+     * @param ll2 
+     * @return
+     */
+    public SinglyLinkedList join(SinglyLinkedList ll1, SinglyLinkedList ll2){
+        ll1.tail.setNext(ll2.head);
+        return new SinglyLinkedList(ll1.head, ll2.tail);
+    }
     
+    /**
+     * Swapping two elements
+     * 
+     * @param i index of the first element
+     * @param j 
+     */
+    public void swap(int i, int j){
+        Node leftI = this.getNode(i-1);
+        Node I = leftI != null ? leftI.next : head;
+        Node leftJ = this.getNode(j - 1);
+        Node J = leftJ != null ? leftJ.next : head;
+        if(J.next == null){
+            tail = I;
+        }
+        else if (I.next == null){
+            tail = J;
+        }
+        if(leftI == null){
+            head = I;
+        }
+        else if(leftJ == null){
+            head = J;
+        }
+        else{
+        leftJ.next = I.next;
+        leftI.next = J.next;
+        }
+        Node temp = J.next;
+        J.next = I.next;
+        I.next = temp;
+    }
 }
